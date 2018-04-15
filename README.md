@@ -1,6 +1,9 @@
 # dsui
 Datastore UI for remote/emulator
 
+## Requirements
+Node Version >= 7.6.0
+
 ## Installation
 `npm i -g @streamrail/dsui`
 
