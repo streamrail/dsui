@@ -8,6 +8,8 @@ Datastore UI
 ```bash
 dsui
 ```
+Open http://localhost:3000
+
 ## Help Menu
 ```bash
 dsui -h
@@ -31,3 +33,4 @@ git clone https://github.com/streamrail/dsui.git
 cd dsui
 npm run watch
 ```
+Open http://localhost:3000
