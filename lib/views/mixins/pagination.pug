@@ -7,21 +7,21 @@ mixin pagination(start, numPages, current, totalPages, onPageClick)
 	ul.pagination.mr-3.mb-0
 		- if(current < 2) 
 			li.page-item.disabled
-				a.page-link(href='#' disabled) Previous
+				a.page-link(disabled) Previous
 		- else
 			li.page-item
-				a.page-link(href='#' onclick=onPageClick(current - 1)) Previous
+				a.page-link(onclick=onPageClick(current - 1)) Previous
 		- for(var i=start; i <= Math.min(start + numPages, totalPages); i++) {
 			- if(i === current)
 				li.page-item.active
-					a.page-link(href='#' onclick=onPageClick(i)) #{i}
+					a.page-link(onclick=onPageClick(i)) #{i}
 			- else
 				li.page-item
-					a.page-link(href='#' onclick=onPageClick(i)) #{i}
+					a.page-link(onclick=onPageClick(i)) #{i}
 		- }
 		- if (current >= totalPages)
 			li.page-item.disabled
-				a.page-link(href='#' disabled) Next
+				a.page-link(disabled) Next
 		- else
 			li.page-item
-				a.page-link(href='#' onclick=onPageClick(current + 1)) Next
+				a.page-link(onclick=onPageClick(current + 1)) Next
