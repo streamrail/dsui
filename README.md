@@ -6,11 +6,11 @@ Datastore UI
 
 ## Usage
 ```bash
-$ dsui
+dsui
 ```
 ## Help Menu
 ```bash
-dsui
+dsui -h
 ```
 
 ## Options
