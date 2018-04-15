@@ -1,35 +1,46 @@
 {
-  "name": "@streamrail/dsui",
-  "version": "0.0.2",
-  "description": "Datastore UI",
-  "private": false,
-  "preferGlobal": true,
-  "main": "./lib/cli.js",
-  "bin": {
-    "dsui": "./bin/dsui"
-  },
-  "scripts": {
-    "start": "node ./lib/cli.js",
-    "watch": "nodemon ./lib/cli.js"
-  },
-  "dependencies": {
-    "@google-cloud/datastore": "^1.4.0",
-    "atob": "^2.1.0",
-    "bootstrap": "^4.1.0",
-    "btoa": "^1.2.1",
-    "colors": "^1.2.1",
-    "console.table": "^0.10.0",
-    "cookie-parser": "~1.4.3",
-    "debug": "~2.6.9",
-    "express": "~4.16.0",
-    "http-errors": "~1.6.2",
-    "lodash": "^4.17.5",
-    "morgan": "~1.9.0",
-    "promise-hash": "^1.2.0",
-    "pug": "2.0.0-beta11",
-    "yargs": "^11.0.0"
-  },
-  "devDependencies": {
-    "nodemon": "^1.17.3"
-  }
+	"name": "@streamrail/dsui",
+	"version": "0.0.3",
+	"description": "Datastore UI",
+	"private": false,
+	"preferGlobal": true,
+	"author": "@ramybenaroya",
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "http://github.com/streamrail/dsui.git"
+	},
+	"main": "./lib/cli.js",
+	"bin": {
+		"dsui": "./bin/dsui"
+	},
+	"scripts": {
+		"start": "node ./lib/cli.js",
+		"watch": "nodemon ./lib/cli.js"
+	},
+	"dependencies": {
+		"@google-cloud/datastore": "^1.4.0",
+		"atob": "^2.1.0",
+		"bootstrap": "^4.1.0",
+		"btoa": "^1.2.1",
+		"colors": "^1.2.1",
+		"console.table": "^0.10.0",
+		"cookie-parser": "~1.4.3",
+		"debug": "~2.6.9",
+		"express": "~4.16.0",
+		"http-errors": "~1.6.2",
+		"lodash": "^4.17.5",
+		"morgan": "~1.9.0",
+		"promise-hash": "^1.2.0",
+		"pug": "2.0.0-beta11",
+		"yargs": "^11.0.0"
+	},
+	"devDependencies": {
+		"nodemon": "^1.17.3"
+	},
+	"keywords": [
+		"gcloud",
+		"datastore",
+		"emulator"
+	]
 }
