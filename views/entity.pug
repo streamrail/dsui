@@ -1,0 +1,12 @@
+extends layout
+
+block content
+    h3 #{entityName}
+    br
+    br
+    form
+        each field in fields
+            .form-group.row
+                label.col-sm-2.col-form-label(for='input#{field}') #{field}
+                .col-sm-10
+                    input.form-control(id='input#{field}' value=entity[field])

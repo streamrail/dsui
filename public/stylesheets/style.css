@@ -1,0 +1,21 @@
+body {
+	font-size: 14px;
+	padding-top: 5rem;
+}
+table {
+	white-space: nowrap;
+  	min-width: 100%;
+}
+
+.full-width {
+	width: 100%;
+	overflow-x: auto;
+}
+
+td, th {
+    max-width: 30rem;
+}
+
+body > .container-fluid {
+
+}

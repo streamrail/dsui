@@ -1,0 +1,58 @@
+extends layout
+include ./mixins/pagination.pug
+
+block content
+	form#form(action='' method='get' onchange='form.submit()')
+		input(type='hidden' name='page' value=entities.currentPage onchange='form.submit()')
+		.form-row
+			.form-group.col-md-4
+				label(for='kinds') Kind
+				select.form-control#kinds(name='kind' onchange='form.id.value = form.name.value = form.page.value = ""')
+					option(value='' disabled selected=(!kind)) Select Entity
+					each kind in kinds
+						option(value=kind selected=(kind === query.kind)) #{kind}
+			.form-group.col-md-4
+				label(for='inputEmail4') ID
+				input#id.form-control(name='id' placeholder='Entity ID' value=query.id onchange='form.name.value = form.page.value = ""')
+			.form-group.col-md-4
+				label(for='name') Name
+				input#name.form-control(name='name' placeholder='Entity Name' value=query.name onchange='form.id.value = form.page.value = ""')
+		if entities.items.length
+			.full-width
+				table.table.table-hover.table-striped
+					thead.thead-dark
+						tr
+							th(scope="col") Key
+							each field in entities.fields
+								- if (!/^_key/.test(field))
+									th(scope='col') #{field}
+					tbody
+						each item in entities.items 
+							tr
+								th(scope="row")
+									a(href=`/entities/${item._keyURIComponent}`) key
+								each field in entities.fields
+									td.text-truncate(title=item[field]) #{item[field]}
+			nav.d-flex.justify-content-end.align-items-baseline
+				+pagination(Math.max(1, entities.currentPage - 2), 5, entities.currentPage, entities.totalPages, function(page) { return `form.page.value=${page};form.submit()`; })
+				p.mr-3 Showing #{entities.start + 1} - #{entities.end - 1} of #{entities.total}
+				select#itemsPerPage(name='itemsPerPage')
+					each ipp in ['5', '10', '20', '50', '100', '200', 'all']
+						option(value=ipp selected=(ipp === query.itemsPerPage)) #{ipp}
+			
+		else
+			| No entities
+
+
+
+
+	//- form#form(action='' method='get' onchange='form.submit()')
+	//- 	input(type='hidden' name='page' value=entities.currentPage onchange='form.submit()')
+	//- 	label(for='kinds') Kinds:  
+	//- 	select#kinds(name='kind')
+	//- 		option(value='' disabled selected=(!kind)) Select Entity
+	//- 		each kind in kinds
+	//- 			option(value=kind selected=(kind === query.kind)) #{kind}
+	//- 	| &nbsp;&nbsp;&nbsp;&nbsp;
+	//- 	label(for='itemsPerPage') Items Per Page:  
+

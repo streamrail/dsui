@@ -1,0 +1,24 @@
+{
+  "name": "dsui",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www",
+    "watch": "nodemon ./bin/www"
+  },
+  "dependencies": {
+    "@google-cloud/datastore": "^1.4.0",
+    "bootstrap": "^4.1.0",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "express": "~4.16.0",
+    "http-errors": "~1.6.2",
+    "lodash": "^4.17.5",
+    "morgan": "~1.9.0",
+    "promise-hash": "^1.2.0",
+    "pug": "2.0.0-beta11"
+  },
+  "devDependencies": {
+    "nodemon": "^1.17.3"
+  }
+}
