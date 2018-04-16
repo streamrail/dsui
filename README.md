@@ -5,7 +5,7 @@ Datastore UI for remote/emulator
 Node Version >= 7.6.0
 
 ## Installation
-`npm i -g @streamrail/dsui`
+`npm i -g streamrail/dsui`
 
 ## Usage
 ```bash
