@@ -1,6 +1,6 @@
 {
 	"name": "@streamrail/dsui",
-	"version": "0.0.5",
+	"version": "0.0.6",
 	"description": "Datastore UI",
 	"private": false,
 	"preferGlobal": true,
@@ -9,6 +9,9 @@
 	"repository": {
 		"type": "git",
 		"url": "http://github.com/streamrail/dsui.git"
+	},
+	"engines": {
+		"node": ">=7.6.0"
 	},
 	"main": "./lib/cli.js",
 	"bin": {
