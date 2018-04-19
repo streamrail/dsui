@@ -6,25 +6,25 @@ block content
 		input(type='hidden' name='page' value=entities.currentPage onchange='form.submit()')
 		.form-row.justify-content
 			.form-group.col.flex-grow-1
-				label(for='kind') Kind
-				select.form-control#kind(name='kind' onchange='form.id.value = form.name.value = form.page.value = ""')
-					option(value='' disabled selected=(!kind)) Select Entity
-					each kind in kinds
-						option(value=kind selected=(kind === query.kind)) #{kind}
-			.form-group.col.flex-grow-1
 				label(for='namespace') Namespace
-				select.form-control#namespace(name='namespace' onchange=(filters.map(f => `form.${f}.value`).join(' = ') || '__') + ' = form.name.kind = form.page.value = ""')
+				select.form-control#namespace(name='namespace' onchange=(filters.map(f => `form.${f}.value`).join(' = ') || '__') + ' = form.page.value = ""')
 					each namespace in namespaces
 						if namespace
 							option(value=namespace selected=(namespace === query.namespace)) #{namespace}
 						else
 							option(value selected=('' === query.namespace)) Default
+			.form-group.col.flex-grow-1
+				label(for='kind') Kind
+				select.form-control#kind(name='kind' onchange=(filters.map(f => `form.${f}.value`).join(' = ') || '__') + ' = form.page.value = ""')
+					option(value='' disabled selected=(!kind)) Select Entity
+					each kind in kinds
+						option(value=kind selected=(kind === query.kind)) #{kind}
 		if filters.length
 			.form-row.justify-content
 				each filter in filters
 					.form-group.col.flex-grow-1
 						label(for=`filter`) #{filter}
-						input.form-control(id=filter name=filter placeholder=filter value=query[filter] onchange=(filters.filter(f => f !== filter).map(f => `form.${f}.value`).join(' = ') || '__') + ' = form.page.value = ""')
+						input.form-control(id=filter name=filter placeholder=filter value=query[filter] onchange='form.page.value = ""')
 		if entities.items.length
 			.full-width
 				table.table.table-hover.table-striped
