@@ -31,8 +31,9 @@ For example when running:
 ```bash
 dsui --filter Id --filter Name
 ```
-The UI will include 2 inputs for filtering by `Id` and `Name` fields.
-*Note:* At the moment this feature supports fields of `String` type only. 
+The UI will include 2 inputs for filtering by `Id` and `Name` fields.  
+Populating `Name` with `somename` will result a query with `query.filter('Name', '=', 'somename')`  
+**Note:** At the moment this feature supports fields of type `String` only. 
 
 
 ## Connect to Datastore Emulator
