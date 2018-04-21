@@ -4,3 +4,7 @@
 - [Enhancement] Dynamic UI filters by cli param
 - [Enhancement] Show Path & Namespace in Key column and as the header of the entity view screen.
 - [Enhancement] Fallback Keys's Identifier to Integer in case `datastore.get(key)` resulted with `undefined`.
+
+## v0.1.1
+### Changes:
+- [Bug Fix] Show kinds of all entities
