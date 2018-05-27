@@ -37,7 +37,7 @@ block content
 					tbody
 						each item in entities.items 
 							tr
-								th(scope="row")
+								th.text-truncate(scope="row")
 									a(href=`/entities/${item._keyURIComponent}`) #{item._formattedPath}
 								each field in entities.fields
 									td.text-truncate(title=item[field]) #{item[field]}
