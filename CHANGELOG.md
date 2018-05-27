@@ -8,3 +8,8 @@
 ## v0.1.1
 ### Changes:
 - [Bug Fix] Show kinds of all entities
+
+## v0.1.2
+### Changes:
+- [Bug Fix] Truncte long keys in entities table view (https://github.com/streamrail/dsui/issues/4)
+- [Bug Fix] Fix double `Default` option for namespace selection, when the only namespace is the default one
