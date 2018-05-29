@@ -15,14 +15,26 @@ Open http://localhost:3000
 
 ## Options
 
-| Option            | Short | Description            | Default                                          | Mandatory |
-|-------------------|-------|------------------------|--------------------------------------------------|-----------|
-| `port`            | `p`   | HTTP server port       | `3000`                                           | ✔         |
-| `project-id`      | `j`   | Datastore Project ID   | `DATASTORE_PROJECT_ID` (Environment Variable)    | ✔         |
-| `api-endpoint`    | `e`   | Datastore API Endpoint | `DATASTORE_EMULATOR_HOST` (Environment Variable) |           |
-| `key-filename`    | `k`   | Private key file path  |                                                  |           |
-| `version`         | `v`   | DSUI module version    |                                                  |           |
-| `help`            | `h`   | Show help menu         |                                                  |           |
+| Option            | Short | Value Type        | Description            | Default                                          | Mandatory |
+|-------------------|-------|-------------------|------------------------|--------------------------------------------------|-----------|
+| `port`            | `p`   | Number            | HTTP server port       | `3000`                                           | ✔         |
+| `project-id`      | `j`   | String            | Datastore Project ID   | `DATASTORE_PROJECT_ID` (Environment Variable)    | ✔         |
+| `api-endpoint`    | `e`   | String            | Datastore API Endpoint | `DATASTORE_EMULATOR_HOST` (Environment Variable) |           |
+| `filter`          | `f`   | Array<String>     | UI Filters             | `[]`                                             |           |
+| `key-filename`    | `k`   | String            | Private key file path  |                                                  |           |
+| `version`         | `v`   | -                 | DSUI module version    |                                                  |           |
+| `help`            | `h`   | -                 | Show help menu         |                                                  |           |
+
+## Customize UI Filters
+You can customize the UI filters by specifiying an array of Field Names.   
+For example when running:
+```bash
+dsui --filter Id --filter Name
+```
+The UI will include 2 inputs for filtering by `Id` and `Name` fields.  
+Populating `Name` with `somename` will result a query with `query.filter('Name', '=', 'somename')`  
+**Note:** At the moment this feature supports fields of type `String` only. 
+
 
 ## Connect to Datastore Emulator
 

@@ -4,19 +4,27 @@ include ./mixins/pagination.pug
 block content
 	form#form(action='' method='get' onchange='form.submit()')
 		input(type='hidden' name='page' value=entities.currentPage onchange='form.submit()')
-		.form-row
-			.form-group.col-md-4
-				label(for='kinds') Kind
-				select.form-control#kinds(name='kind' onchange='form.id.value = form.name.value = form.page.value = ""')
+		.form-row.justify-content
+			.form-group.col.flex-grow-1
+				label(for='namespace') Namespace
+				select.form-control#namespace(name='namespace' onchange=(filters.map(f => `form.${f}.value`).join(' = ') || '__') + ' = form.page.value = ""')
+					each namespace in namespaces
+						if namespace
+							option(value=namespace selected=(namespace === query.namespace)) #{namespace}
+						else
+							option(value selected=('' === query.namespace)) Default
+			.form-group.col.flex-grow-1
+				label(for='kind') Kind
+				select.form-control#kind(name='kind' onchange=(filters.map(f => `form.${f}.value`).join(' = ') || '__') + ' = form.page.value = ""')
 					option(value='' disabled selected=(!kind)) Select Entity
 					each kind in kinds
 						option(value=kind selected=(kind === query.kind)) #{kind}
-			.form-group.col-md-4
-				label(for='inputEmail4') ID
-				input#id.form-control(name='id' placeholder='Entity ID' value=query.id onchange='form.name.value = form.page.value = ""')
-			.form-group.col-md-4
-				label(for='name') Name
-				input#name.form-control(name='name' placeholder='Entity Name' value=query.name onchange='form.id.value = form.page.value = ""')
+		if filters.length
+			.form-row.justify-content
+				each filter in filters
+					.form-group.col.flex-grow-1
+						label(for=`filter`) #{filter}
+						input.form-control(id=filter name=filter placeholder=filter value=query[filter] onchange='form.page.value = ""')
 		if entities.items.length
 			.full-width
 				table.table.table-hover.table-striped
@@ -29,8 +37,8 @@ block content
 					tbody
 						each item in entities.items 
 							tr
-								th(scope="row")
-									a(href=`/entities/${item._keyURIComponent}`) key
+								th.text-truncate(scope="row")
+									a(href=`/entities/${item._keyURIComponent}`) #{item._formattedPath}
 								each field in entities.fields
 									td.text-truncate(title=item[field]) #{item[field]}
 			nav.d-flex.justify-content-end.align-items-baseline
@@ -42,17 +50,3 @@ block content
 			
 		else
 			| No entities
-
-
-
-
-	//- form#form(action='' method='get' onchange='form.submit()')
-	//- 	input(type='hidden' name='page' value=entities.currentPage onchange='form.submit()')
-	//- 	label(for='kinds') Kinds:  
-	//- 	select#kinds(name='kind')
-	//- 		option(value='' disabled selected=(!kind)) Select Entity
-	//- 		each kind in kinds
-	//- 			option(value=kind selected=(kind === query.kind)) #{kind}
-	//- 	| &nbsp;&nbsp;&nbsp;&nbsp;
-	//- 	label(for='itemsPerPage') Items Per Page:  
-
