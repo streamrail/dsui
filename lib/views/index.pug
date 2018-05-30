@@ -2,51 +2,59 @@ extends layout
 include ./mixins/pagination.pug
 
 block content
-	form#form(action='' method='get' onchange='form.submit()')
-		input(type='hidden' name='page' value=entities.currentPage onchange='form.submit()')
+	
+	input(type='hidden' name='page' value=entities.currentPage onchange='form.submit()' form='form')
+	.form-row.justify-content
+		.form-group.col.flex-grow-1
+			label(for='namespace') Namespace
+			select.form-control#namespace(name='namespace' form='form' onchange=(filters.map(f => `form.${f}.value`).join(' = ') || '__') + ' = form.page.value = ""; form.submit()')
+				each namespace in namespaces
+					if namespace
+						option(value=namespace selected=(namespace === query.namespace)) #{namespace}
+					else
+						option(value selected=('' === query.namespace)) Default
+		.form-group.col.flex-grow-1
+			label(for='kind') Kind
+			select.form-control#kind(name='kind' form='form' onchange=(filters.map(f => `form.${f}.value`).join(' = ') || '__') + ' = form.page.value = ""; form.submit()')
+				option(value='' disabled selected=(!kind)) Select Entity
+				each kind in kinds
+					option(value=kind selected=(kind === query.kind)) #{kind}
+	if filters.length
 		.form-row.justify-content
-			.form-group.col.flex-grow-1
-				label(for='namespace') Namespace
-				select.form-control#namespace(name='namespace' onchange=(filters.map(f => `form.${f}.value`).join(' = ') || '__') + ' = form.page.value = ""')
-					each namespace in namespaces
-						if namespace
-							option(value=namespace selected=(namespace === query.namespace)) #{namespace}
-						else
-							option(value selected=('' === query.namespace)) Default
-			.form-group.col.flex-grow-1
-				label(for='kind') Kind
-				select.form-control#kind(name='kind' onchange=(filters.map(f => `form.${f}.value`).join(' = ') || '__') + ' = form.page.value = ""')
-					option(value='' disabled selected=(!kind)) Select Entity
-					each kind in kinds
-						option(value=kind selected=(kind === query.kind)) #{kind}
-		if filters.length
-			.form-row.justify-content
-				each filter in filters
-					.form-group.col.flex-grow-1
-						label(for=`filter`) #{filter}
-						input.form-control(id=filter name=filter placeholder=filter value=query[filter] onchange='form.page.value = ""')
-		if entities.items.length
-			.full-width
-				table.table.table-hover.table-striped
-					thead.thead-dark
+			each filter in filters
+				.form-group.col.flex-grow-1
+					label(for=`filter`) #{filter}
+					input.form-control(id=filter name=filter form='form' placeholder=filter value=query[filter] onchange='form.page.value = ""; form.submit()')
+	if entities.items.length
+		.full-width
+			table.table.table-hover.table-striped
+				thead.thead-dark
+					tr
+						th(scope="col")
+							input(id=`checkboxAll` type='checkbox' onchange='Array.from(document.querySelectorAll(".entity-checkbox")).forEach(el => el.checked = event.target.checked);')
+						th(scope="col") Key
+						each field in entities.fields
+							- if (!/^_key/.test(field))
+								th(scope='col') #{field}
+				tbody
+					each item, index in entities.items 
 						tr
-							th(scope="col") Key
+							th(scope="row")
+								input.entity-checkbox(id=`checkbox${index}` type='checkbox' value=item._keyURIComponent name='keys' form='deleteForm')
+							td.text-truncate(title=item._formattedPath)
+								a(href=`/entities/${item._keyURIComponent}`) #{item._formattedPath}
 							each field in entities.fields
-								- if (!/^_key/.test(field))
-									th(scope='col') #{field}
-					tbody
-						each item in entities.items 
-							tr
-								th.text-truncate(scope="row")
-									a(href=`/entities/${item._keyURIComponent}`) #{item._formattedPath}
-								each field in entities.fields
-									td.text-truncate(title=item[field]) #{item[field]}
-			nav.d-flex.justify-content-end.align-items-baseline
+								td.text-truncate(title=item[field]) #{item[field]}
+		nav.d-flex.justify-content-between.align-items-baseline
+			button.btn.btn-danger.btn-sm.left(onclick='confirm("Are you sure?") && deleteForm.submit();') Delete Selected
+			div.d-flex.justify-content-end.align-items-baseline
 				+pagination(Math.max(1, entities.currentPage - 2), 5, entities.currentPage, entities.totalPages, function(page) { return `form.page.value=${page};form.submit()`; })
 				p.mr-3 Showing #{entities.start + 1} - #{entities.end} of #{entities.total}
-				select#itemsPerPage(name='itemsPerPage' onchange='form.page.value=1')
+				select#itemsPerPage(name='itemsPerPage' onchange='form.page.value=1; form.submit();' form='form')
 					each ipp in ['5', '10', '20', '50', '100', '200', 'all']
 						option(value=ipp selected=(ipp === query.itemsPerPage)) #{ipp}
-			
-		else
-			| No entities
+		
+	else
+		| No entities
+	form#form.d-none(action='' method='get')
+	form#deleteForm(action=`/delete-entities` method='post')
