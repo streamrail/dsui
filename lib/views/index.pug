@@ -31,7 +31,7 @@ block content
 				thead.thead-dark
 					tr
 						th(scope="col")
-							input(id=`checkboxAll` type='checkbox' onchange='Array.from(document.querySelectorAll(".entity-checkbox")).forEach(el => el.checked = event.target.checked);')
+							input(id=`checkboxAll` type='checkbox' onchange='onAllCheckboxChange()')
 						th(scope="col") Key
 						each field in entities.fields
 							- if (!/^_key/.test(field))
@@ -40,13 +40,13 @@ block content
 					each item, index in entities.items 
 						tr
 							th(scope="row")
-								input.entity-checkbox(id=`checkbox${index}` type='checkbox' value=item._keyURIComponent name='keys' form='deleteForm')
+								input.entity-checkbox(id=`checkbox${index}` type='checkbox' value=item._keyURIComponent name='keys' form='deleteForm' onchange='adjustDeleteButton()')
 							td.text-truncate(title=item._formattedPath)
 								a(href=`/entities/${item._keyURIComponent}`) #{item._formattedPath}
 							each field in entities.fields
 								td.text-truncate(title=item[field]) #{item[field]}
 		nav.d-flex.justify-content-between.align-items-baseline
-			button.btn.btn-danger.btn-sm.left(onclick='confirm("Are you sure?") && deleteForm.submit();') Delete Selected
+			button#deleteButton.btn.btn-danger.btn-sm.left(onclick='onDeleteClick()' disabled) Delete Selected
 			div.d-flex.justify-content-end.align-items-baseline
 				+pagination(Math.max(1, entities.currentPage - 2), 5, entities.currentPage, entities.totalPages, function(page) { return `form.page.value=${page};form.submit()`; })
 				p.mr-3 Showing #{entities.start + 1} - #{entities.end} of #{entities.total}
@@ -58,3 +58,27 @@ block content
 		| No entities
 	form#form.d-none(action='' method='get')
 	form#deleteForm(action=`/delete-entities` method='post')
+
+block script
+
+	script.
+		function adjustDeleteButton() {
+			if (getCheckedLength()) {
+				deleteButton.removeAttribute("disabled");
+			} else {
+				deleteButton.setAttribute("disabled", "");
+			}
+		}
+
+		function onAllCheckboxChange() {
+			Array.from(document.querySelectorAll(".entity-checkbox")).forEach(el => el.checked = event.target.checked);
+			adjustDeleteButton();
+		}
+
+		function onDeleteClick() {
+			confirm(`Delete ${getCheckedLength()} #{query.kind} entities?`) && deleteForm.submit();
+		}
+
+		function getCheckedLength (){
+			return Array.from(deleteForm.keys).filter(x => x.checked).length
+		}
