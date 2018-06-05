@@ -13,3 +13,9 @@
 ### Changes:
 - [Bug Fix] Truncte long keys in entities table view (https://github.com/streamrail/dsui/issues/4)
 - [Bug Fix] Fix double `Default` option for namespace selection, when the only namespace is the default one
+
+## v0.2.0
+### Changes
+- [Feature] Delete Entities.
+ - Added checkboxes to select entities and delete them
+ - Added Delete button in single entity page 
