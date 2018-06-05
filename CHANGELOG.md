@@ -17,5 +17,5 @@
 ## v0.2.0
 ### Changes
 - [Feature] Delete Entities.
- - Added checkboxes to select entities and delete them
- - Added Delete button in single entity page 
+  1. Added checkboxes to select entities and delete them
+  2. Added Delete button in single entity page 
