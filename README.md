@@ -1,5 +1,5 @@
 # dsui
-Datastore UI for remote/emulator
+Datastore Emulator UI
 
 <img src="/docs/example.png" alt="DSUI example screenshot"/>
 
@@ -7,13 +7,21 @@ Datastore UI for remote/emulator
 Node Version >= 7.6.0
 
 ## Installation
-`npm i -g @streamrail/dsui`
+`npm i -g @streamrail/dsui`x
 
 ## Usage
 ```bash
+# Start the datastore emulator
+gcloud beta emulators datastore start
+
+# Open a new terminal
+$(gcloud beta emulators datastore env-init)
 dsui
+
+# Open http://localhost:3000 and start browsing
 ```
-Open http://localhost:3000
+
+For more information about the datastore emulator, please see [this document](https://cloud.google.com/datastore/docs/tools/datastore-emulator#setting_environment_variables).
 
 ## Options
 
@@ -38,14 +46,6 @@ Populating `Name` with `somename` will result a query with `query.filter('Name',
 **Note:** At the moment this feature supports fields of type `String` only. 
 
 
-## Connect to Datastore Emulator
-
-If you want to connect to [local Datastore emnulator](https://cloud.google.com/datastore/docs/tools/datastore-emulator), execute below command:
-```bash
-$(gcloud beta emulators datastore env-init)
-dsui
-```
-
 For more information, please see [this document](https://cloud.google.com/datastore/docs/tools/datastore-emulator#setting_environment_variables).
 
 ## Develop
@@ -55,3 +55,6 @@ cd dsui
 npm run watch
 ```
 Open http://localhost:3000
+
+## Tests
+Coming soon...
