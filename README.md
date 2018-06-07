@@ -1,6 +1,8 @@
 # dsui
 Datastore UI for remote/emulator
 
+<img src="/docs/example.png" alt="DSUI example screenshot"/>
+
 ## Requirements
 Node Version >= 7.6.0
 
