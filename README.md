@@ -1,5 +1,10 @@
-![CircleCI](https://img.shields.io/circleci/project/github/streamrail/dsui.svg)
-[![npm version](https://badge.fury.io/js/%40streamrail%2Fdsui.svg)](https://badge.fury.io/@streamrail/dsui)
+[![CircleCI Build Status][circleci-badge]][circleci-url]
+[![Latest npm release][npm-badge]][npm-url]
+
+[circleci-badge]: https://img.shields.io/circleci/project/github/streamrail/dsui.svg
+[circleci-url]: https://circleci.com/gh/streamrail/dsui
+[npm-badge]: https://badge.fury.io/js/%40streamrail%2Fdsui.svg
+[npm-url]: https://www.npmjs.com/package/@streamrail/dsui
 
 # dsui
 Datastore Emulator UI   
