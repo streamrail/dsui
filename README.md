@@ -10,7 +10,7 @@ Datastore Emulator UI
 Node Version >= 7.6.0
 
 ## Installation
-`npm i -g @streamrail/dsui`x
+`npm i -g @streamrail/dsui`
 
 ## Usage
 ```bash
