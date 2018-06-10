@@ -19,3 +19,8 @@
 - [Feature] Delete Entities.
   1. Added checkboxes to select entities and delete them
   2. Added Delete button in single entity page 
+
+## v0.2.1
+### Changes
+- [Bug Fix] Single Entity view - Fix inputs `id` and labels `for` attribute to correspond with field name
+- [Bug Fix] List Page - Fix buggy `itemsPerPage` selected option 
