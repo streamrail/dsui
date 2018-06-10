@@ -60,4 +60,22 @@ npm run watch
 Open http://localhost:3000
 
 ## Tests
-Coming soon...
+Running the tests will seed the datastore emulator with predefined data.
+For running the tests you'll need to run 3 terminals:
+###  Terminal 1
+```bash
+# start datastore emulator
+gcloud beta emulators datastore start --consistency=1 --no-store-on-disk
+```
+### Terminal 2
+```bash
+# starting the dsui server
+$(gcloud beta emulators datastore env-init)
+npm run watch
+```
+### Terminal 3
+```bash
+# seeding & running tests
+$(gcloud beta emulators datastore env-init)
+npm run test
+```
