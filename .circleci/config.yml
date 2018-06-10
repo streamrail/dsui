@@ -1,0 +1,25 @@
+version: 2
+
+jobs:
+  build:
+    docker:
+      - image: easymetrics/circleci-gcp-node8
+    steps:
+      - checkout
+      - setup_remote_docker:
+          docker_layer_caching: true
+      - restore_cache:
+          keys:
+            - dsui-npm-deps-{{ .Branch }}-v2-
+      - run:
+          name: NPM Install
+          command: |
+            npm i
+      - save_cache:
+          key: dsui-npm-deps-{{ .Branch }}-v2-{{ epoch }}
+          paths:
+            - node_modules
+      - run:
+          name: Run Tests
+          command: |
+            chmod +x ./test/test.sh && ./test/test.sh

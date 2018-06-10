@@ -1,14 +1,14 @@
 extends layout
 
 block content
-    h5 #{entityName}
+    h5#entity_key #{entityName}
     br
     br
     each field in fields
         .form-group.row
-            label.col-sm-2.col-form-label(for='input#{field}') #{field}
+            label.col-sm-2.col-form-label(for=`field_${field}`) #{field}
             .col-sm-10
-                input.form-control(id='input#{field}' value=entity[field] readonly)
+                input.form-control(id=`field_${field}` value=entity[field] readonly)
     form#deleteForm(action='/delete-entities' method='post')
         input(type='hidden' value=keyURIComponent name='keys')
         button#deleteButton.btn.btn-danger.btn-sm.left(onclick='confirm("Are you sure?") && deleteForm.submit();') Delete

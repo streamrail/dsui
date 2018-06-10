@@ -19,7 +19,8 @@
 	},
 	"scripts": {
 		"start": "node ./lib/cli.js",
-		"watch": "nodemon ./lib/cli.js"
+		"watch": "nodemon ./lib/cli.js --ignore test",
+		"test": "mocha test/test.js"
 	},
 	"dependencies": {
 		"@google-cloud/datastore": "^1.4.0",
@@ -39,7 +40,21 @@
 		"yargs": "^11.0.0"
 	},
 	"devDependencies": {
-		"nodemon": "^1.17.3"
+		"await-sleep": "0.0.1",
+		"chai": "^4.1.2",
+		"chai-arrays": "^2.0.0",
+		"chai-cheerio": "^1.0.0",
+		"cheerio": "^1.0.0-rc.2",
+		"cheerio-tableparser": "^1.0.1",
+		"faker": "^4.1.0",
+		"form-data": "^2.3.2",
+		"isomorphic-fetch": "^2.2.1",
+		"json-schema-faker": "^0.5.0-rc15",
+		"mocha": "^5.2.0",
+		"moment": "^2.22.2",
+		"nodemon": "^1.17.3",
+		"qs": "^6.5.2",
+		"seedrandom": "^2.4.3"
 	},
 	"keywords": [
 		"gcloud",

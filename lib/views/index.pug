@@ -52,7 +52,7 @@ block content
 				p.mr-3 Showing #{entities.start + 1} - #{entities.end} of #{entities.total}
 				select#itemsPerPage(name='itemsPerPage' onchange='form.page.value=1; form.submit();' form='form')
 					each ipp in ['5', '10', '20', '50', '100', '200', 'all']
-						option(value=ipp selected=(ipp === query.itemsPerPage)) #{ipp}
+						option(value=ipp selected=(ipp == query.itemsPerPage)) #{ipp}
 		
 	else
 		| No entities
