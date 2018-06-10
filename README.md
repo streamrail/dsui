@@ -1,4 +1,4 @@
-![CircleCI](https://img.shields.io/circleci/project/github/streamrail/dsui/test.svg)
+![CircleCI](https://img.shields.io/circleci/project/github/streamrail/dsui.svg)
 [![npm version](https://badge.fury.io/js/%40streamrail%2Fdsui.svg)](https://badge.fury.io/@streamrail/dsui)
 
 # dsui
