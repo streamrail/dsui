@@ -1,5 +1,8 @@
+![CircleCI](https://img.shields.io/circleci/project/github/streamrail/dsui/test.svg)
+[![npm version](https://badge.fury.io/js/%40streamrail%2Fdsui.svg)](https://badge.fury.io/@streamrail/dsui)
+
 # dsui
-Datastore Emulator UI
+Datastore Emulator UI   
 
 <img src="/docs/example.png" alt="DSUI example screenshot"/>
 
