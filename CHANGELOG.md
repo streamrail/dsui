@@ -24,3 +24,8 @@
 ### Changes
 - [Bug Fix] Single Entity view - Fix inputs `id` and labels `for` attribute to correspond with field name
 - [Bug Fix] List Page - Fix buggy `itemsPerPage` selected option 
+
+## v0.2.2
+### Changes
+- [Bug Fix] Fix non string rendering in entity view page
+- [Enhancement] Locate bootstrap css in project's node_modules directories
