@@ -27,5 +27,5 @@
 
 ## v0.2.2
 ### Changes
-- [Bug Fix] Fix non string rendering in entity view page
+- [Bug Fix] Fix non string values rendering in entity view page
 - [Enhancement] Locate bootstrap css in project's node_modules directories
