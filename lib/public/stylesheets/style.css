@@ -16,6 +16,14 @@ td, th {
     max-width: 30rem;
 }
 
+th a {
+    color: white;
+}
+
+th a:hover {
+    color: white;
+}
+
 body > .container-fluid {
 
 }
