@@ -2,8 +2,11 @@ extends layout
 include ./mixins/pagination.pug
 
 block content
-	
+
 	input(type='hidden' name='page' value=entities.currentPage onchange='form.submit()' form='form')
+	input(type='hidden' name='orderfield' value=query.orderfield onchange='form.submit()' form='form')
+	input(type='hidden' name='orderdesc' value=query.orderdesc onchange='form.submit()' form='form')
+
 	.form-row.justify-content
 		.form-group.col.flex-grow-1
 			label(for='namespace') Namespace
@@ -35,9 +38,9 @@ block content
 						th(scope="col") Key
 						each field in entities.fields
 							- if (!/^_key/.test(field))
-								th(scope='col') #{field}
+								th(scope='col', onclick='onHeaderClick("'+field+'")') #{field}
 				tbody
-					each item, index in entities.items 
+					each item, index in entities.items
 						tr
 							th(scope="row")
 								input.entity-checkbox(id=`checkbox${index}` type='checkbox' value=item._keyURIComponent name='keys' form='deleteForm' onchange='adjustDeleteButton()')
@@ -53,7 +56,7 @@ block content
 				select#itemsPerPage(name='itemsPerPage' onchange='form.page.value=1; form.submit();' form='form')
 					each ipp in ['5', '10', '20', '50', '100', '200', 'all']
 						option(value=ipp selected=(ipp == query.itemsPerPage)) #{ipp}
-		
+
 	else
 		| No entities
 	form#form.d-none(action='' method='get')
@@ -73,6 +76,15 @@ block script
 		function onAllCheckboxChange() {
 			Array.from(document.querySelectorAll(".entity-checkbox")).forEach(el => el.checked = event.target.checked);
 			adjustDeleteButton();
+		}
+
+		function onHeaderClick(field) {
+			if (form.orderfield.value!==field) {
+				form.orderfield.value=field;
+			} else {
+				form.orderdesc.value = (form.orderdesc.value == 'false') ? true : false;
+			}
+			form.submit();
 		}
 
 		function onDeleteClick() {
