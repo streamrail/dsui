@@ -1,6 +1,6 @@
 {
 	"name": "@streamrail/dsui",
-	"version": "0.2.2",
+	"version": "0.2.3",
 	"description": "Datastore UI",
 	"private": false,
 	"preferGlobal": true,
@@ -11,7 +11,7 @@
 		"url": "http://github.com/streamrail/dsui.git"
 	},
 	"engines": {
-		"node": ">=7.6.0"
+		"node": ">=10"
 	},
 	"main": "./lib/cli.js",
 	"bin": {
@@ -23,7 +23,7 @@
 		"test": "mocha test/test.js"
 	},
 	"dependencies": {
-		"@google-cloud/datastore": "^1.4.0",
+		"@google-cloud/datastore": "^6.3.1",
 		"atob": "^2.1.0",
 		"bootstrap": "^4.1.0",
 		"btoa": "^1.2.1",
