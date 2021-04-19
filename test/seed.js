@@ -1,4 +1,4 @@
-const Datastore = require('@google-cloud/datastore');
+const { Datastore } = require('@google-cloud/datastore');
 const _ = require('lodash');
 const jsf = require('json-schema-faker');
 const employee = require('./entities/employee');

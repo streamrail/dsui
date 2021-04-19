@@ -12,7 +12,7 @@ Datastore Emulator UI
 <img src="/docs/example.png" alt="DSUI example screenshot"/>
 
 ## Requirements
-Node Version >= 7.6.0
+Node Version >= 10
 
 ## Installation
 `npm i -g @streamrail/dsui`
@@ -33,15 +33,15 @@ For more information about the datastore emulator, please see [this document](ht
 
 ## Options
 
-| Option            | Short | Value Type        | Description            | Default                                          | Mandatory |
-|-------------------|-------|-------------------|------------------------|--------------------------------------------------|-----------|
-| `port`            | `p`   | Number            | HTTP server port       | `3000`                                           | ✔         |
-| `project-id`      | `j`   | String            | Datastore Project ID   | `DATASTORE_PROJECT_ID` (Environment Variable)    | ✔         |
-| `api-endpoint`    | `e`   | String            | Datastore API Endpoint | `DATASTORE_EMULATOR_HOST` (Environment Variable) |           |
-| `filter`          | `f`   | Array<String>     | UI Filters             | `[]`                                             |           |
-| `key-filename`    | `k`   | String            | Private key file path  |                                                  |           |
-| `version`         | `v`   | -                 | DSUI module version    |                                                  |           |
-| `help`            | `h`   | -                 | Show help menu         |                                                  |           |
+| Option         | Short | Value Type    | Description            | Default                                          | Mandatory |
+| -------------- | ----- | ------------- | ---------------------- | ------------------------------------------------ | --------- |
+| `port`         | `p`   | Number        | HTTP server port       | `3000`                                           | ✔         |
+| `project-id`   | `j`   | String        | Datastore Project ID   | `DATASTORE_PROJECT_ID` (Environment Variable)    | ✔         |
+| `api-endpoint` | `e`   | String        | Datastore API Endpoint | `DATASTORE_EMULATOR_HOST` (Environment Variable) |           |
+| `filter`       | `f`   | Array<String> | UI Filters             | `[]`                                             |           |
+| `key-filename` | `k`   | String        | Private key file path  |                                                  |           |
+| `version`      | `v`   | -             | DSUI module version    |                                                  |           |
+| `help`         | `h`   | -             | Show help menu         |                                                  |           |
 
 ## Customize UI Filters
 You can customize the UI filters by specifiying an array of Field Names.   

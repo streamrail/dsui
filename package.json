@@ -1,6 +1,6 @@
 {
 	"name": "@streamrail/dsui",
-	"version": "0.2.2",
+	"version": "0.2.3",
 	"description": "Datastore UI",
 	"private": false,
 	"preferGlobal": true,
@@ -11,7 +11,7 @@
 		"url": "http://github.com/streamrail/dsui.git"
 	},
 	"engines": {
-		"node": ">=7.6.0"
+		"node": ">=10"
 	},
 	"main": "./lib/cli.js",
 	"bin": {
@@ -23,7 +23,7 @@
 		"test": "mocha test/test.js"
 	},
 	"dependencies": {
-		"@google-cloud/datastore": "^1.4.0",
+		"@google-cloud/datastore": "^6.3.1",
 		"atob": "^2.1.0",
 		"bootstrap": "^4.1.0",
 		"btoa": "^1.2.1",
@@ -31,13 +31,13 @@
 		"console.table": "^0.10.0",
 		"cookie-parser": "~1.4.3",
 		"debug": "~2.6.9",
-		"express": "~4.16.0",
+		"express": "~4.17.1",
 		"http-errors": "~1.6.2",
 		"lodash": "^4.17.5",
 		"morgan": "~1.9.0",
 		"promise-hash": "^1.2.0",
-		"pug": "2.0.0-beta11",
-		"yargs": "^11.0.0"
+		"pug": "^3.0.2",
+		"yargs": "^16.2.0"
 	},
 	"devDependencies": {
 		"await-sleep": "0.0.1",
@@ -48,9 +48,9 @@
 		"cheerio-tableparser": "^1.0.1",
 		"faker": "^4.1.0",
 		"form-data": "^2.3.2",
-		"isomorphic-fetch": "^2.2.1",
+		"isomorphic-fetch": "^3.0.0",
 		"json-schema-faker": "^0.5.0-rc15",
-		"mocha": "^5.2.0",
+		"mocha": "^8.3.2",
 		"moment": "^2.22.2",
 		"nodemon": "^1.17.3",
 		"qs": "^6.5.2",

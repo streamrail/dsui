@@ -8,7 +8,10 @@ block content
         .form-group.row
             label.col-sm-2.col-form-label(for=`field_${field}`) #{field}
             .col-sm-10
-                input.form-control(id=`field_${field}` value=`${entity[field]}` readonly)
+                if typeof entity[field] === 'string' && entity[field].length > 100
+                    textarea.form-control(id=`field_${field}` readonly)=entity[field]
+                else
+                    input.form-control(id=`field_${field}` value=`${entity[field]}` readonly)
     form#deleteForm(action='/delete-entities' method='post')
         input(type='hidden' value=keyURIComponent name='keys')
         button#deleteButton.btn.btn-danger.btn-sm.left(onclick='confirm("Are you sure?") && deleteForm.submit();') Delete
